@@ -23,10 +23,12 @@ jobs:
       if: always()
       run: |
         bandit -r . -o report.txt 
+        ls -ltr
+        pwd
     - name: Upload a Build Artifact
       if: always()
       uses: actions/upload-artifact@v4.3.3
       with:
         name: bandit
-        path: ${{ github.workspace }}\report.txt      
+        path: ${{ github.workspace }}/report.txt      
     
