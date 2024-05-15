@@ -1,0 +1,31 @@
+name: Pylint
+
+on: 
+  push:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    env:
+      SUPER_SECRET: ${{ secrets.gh_secret }}
+    steps:
+    - uses: actions/checkout@v4
+    - name: Install dependencies
+      run: |
+        pip install pylint
+    - name: Analysing the code with pylint
+      run: |
+        pylint $(git ls-files '*.py')
+    - name: scanning the code with bandit
+      if: always()
+      run: |
+        bandit -r . -o report.txt 
+    - name: Upload a Build Artifact
+      if: always()
+      uses: actions/upload-artifact@v4.3.3
+      with:
+        name: bandit
+        path: ${{ github_workspace }}/report.txt      
+    
