@@ -1,0 +1,18 @@
+# Following are the packages required to be installed for Leakware.
+# Use 'install_libraries.py' to install these.
+# To include additional libraries for Leakware, append them to the
+# end of 'requirements.txt'. The 'install_libraries.py' script will
+# automatically verify and install any uninstalled libraries listed
+numpy
+pandas
+pandastable
+pyserial
+fpdf
+matplotlib
+future
+pillow
+pyinstaller
+sqlalchemy
+mysql-connector-python
+tkcalendar
+wmi
